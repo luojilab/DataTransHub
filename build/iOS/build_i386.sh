@@ -1,5 +1,6 @@
 #!/bin/bash
 rm -rf  build/i386
+rm -rf ../../libs/i386
 mkdir -p build/i386
 mkdir -p libs/i386
 cd build/i386

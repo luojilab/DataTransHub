@@ -1,5 +1,6 @@
 #!/bin/bash
 rm -rf build/arm
+rm -rf ../../libs/arm
 mkdir -p build/arm
 mkdir -p libs/arm
 cd build/arm
