@@ -7,49 +7,94 @@
     tools:context="com.iget.demo.MainActivity">
 
     <Button
-        android:id="@+id/id_start"
+        android:id="@+id/id_start1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="start"
+        android:text="start1"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/id_start2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/id_start2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start2"
+        app:layout_constraintLeft_toRightOf="@id/id_start1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/id_push"
+        android:id="@+id/id_push1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="push"
+        android:text="push1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_start" />
+        app:layout_constraintRight_toLeftOf="@id/id_push2"
+        app:layout_constraintTop_toBottomOf="@+id/id_start1" />
 
     <Button
-        android:id="@+id/id_reweaken"
+        android:id="@+id/id_push2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test_reweaken"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="push2"
+        app:layout_constraintLeft_toRightOf="@id/id_push1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_push" />
+        app:layout_constraintTop_toBottomOf="@+id/id_start2" />
 
     <Button
-    android:id="@+id/id_manual_trigger_upload"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="test_ManualTriggerUpload"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/id_reweaken" />
-
-    <Button
-        android:id="@+id/id_release"
+        android:id="@+id/id_reweaken1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test_release"
+        android:text="test_reweaken1"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/id_reweaken2"
+        app:layout_constraintTop_toBottomOf="@id/id_push1" />
+
+    <Button
+        android:id="@+id/id_reweaken2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test_reweaken2"
+        app:layout_constraintLeft_toRightOf="@id/id_reweaken1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_manual_trigger_upload" />
+        app:layout_constraintTop_toBottomOf="@id/id_push2" />
+
+    <Button
+        android:id="@+id/id_manual_trigger_upload1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test_ManualTriggerUpload1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/id_manual_trigger_upload2"
+        app:layout_constraintTop_toBottomOf="@id/id_reweaken1" />
+
+    <Button
+        android:id="@+id/id_manual_trigger_upload2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test_ManualTriggerUpload2"
+        app:layout_constraintLeft_toRightOf="@id/id_manual_trigger_upload1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_reweaken2" />
+
+    <Button
+        android:id="@+id/id_release1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test_release1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/id_release2"
+        app:layout_constraintTop_toBottomOf="@id/id_manual_trigger_upload1" />
+
+    <Button
+        android:id="@+id/id_release2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test_release2"
+        app:layout_constraintLeft_toRightOf="@id/id_release1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_manual_trigger_upload2" />
 
     <Button
         android:id="@+id/id_test_flog"
@@ -58,6 +103,6 @@
         android:text="test_flog"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_release" />
+        app:layout_constraintTop_toBottomOf="@id/id_release1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
