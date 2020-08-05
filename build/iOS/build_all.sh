@@ -1,5 +1,6 @@
 #!/bin/bash
 rm -rf build
+rm -rf libs/*
 ./build_i386.sh
 ./build_x86_64.sh
 ./build_arm.sh
