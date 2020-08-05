@@ -1,0 +1,3 @@
+rootProject.name='DataTransHub'
+include ':app'
+include ':datatranshub'

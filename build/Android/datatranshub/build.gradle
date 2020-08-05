@@ -1,0 +1,170 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply from: 'maven_config.gradle'
+apply plugin: 'bugly'
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME as String
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    signingConfigs {
+        debug {
+
+        }
+
+        release {
+            storeFile file("E:\\project\\luojisiwei\\related_files\\android_keystore.jks")
+            storePassword '${sign_storePassword}'
+            keyAlias '${sign_keyAlias}'
+            keyPassword '${sign_keyPassword}'
+            // 如果要支持最新版的系统 Android N(7.0)
+            // 这一行必须加，否则安装时会提示没有签名
+            // 作用是只使用旧版签名，禁用V2版签名模式
+            v2SigningEnabled true
+        }
+
+    }
+
+    buildTypes {
+        debug {
+
+            externalNativeBuild {
+                cmake {
+                    cppFlags "-std=c++14",
+                            "-DPIC",
+                            "-fPIC",
+                            "-DVERSION_CODE=${defaultConfig.versionCode}",
+                            "-llog"
+                    //,"-fsanitize=address -fno-omit-frame-pointer"
+
+                    cFlags "-ffunction-sections",
+                            "-fdata-sections",
+                            "-llog",
+                            "-mfpu=neon",
+                            "-mthumb",
+                            "-mfloat-abi=softfp",
+                            "-fstack-protector"
+                    //,"-fsanitize=address -fno-omit-frame-pointer"
+
+                    //abiFilters "armeabi-v7a" , "arm64-v8a"
+                    abiFilters "arm64-v8a"
+                    arguments '-DANDROID_ARM_NEON=TRUE',
+                            '-DANDROID_ARM_MODE=arm',
+                            '-DANDROID_PLATFORM=android-17',
+                            '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_shared',
+                            //'-DANDROID_ABI=armeabi-v7a',"-DCMAKE_BUILD_TYPE=Debug"
+                            "-DCMAKE_BUILD_TYPE=Debug"
+
+                    //'-DANDROID_STL=c++_static',
+                    //'-DANDROID_STL=gnustl_static',
+                    //-DANDROID_ALLOW_UNDEFINED_SYMBOLS=true
+                }
+            }
+
+            ndk {
+                // 设置支持的 SO 库架构，注意这里要根据你的实际情况来设置
+                abiFilters 'armeabi-v7a', 'arm64-v8a'
+                //''armeabi','armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+            }
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            externalNativeBuild {
+                cmake {
+                    cppFlags "-std=c++14",
+                            "-DPIC",
+                            "-fPIC",
+                            "-O3", //gcc use Os
+                            "-DNDEBUG",
+                            "-DVERSION_CODE=${defaultConfig.versionCode}",
+                            "-fvisibility=hidden",
+                            "-llog"
+
+                    cFlags "-fvisibility=hidden",
+                            "-ffunction-sections",
+                            "-fdata-sections",
+                            "-O3",
+                            "-DNDEBUG",
+//                            "-march=armv7-a",
+//                            "--fix-cortex-a8",
+                            "-mfpu=neon",
+                            "-mthumb",
+                            "-mfloat-abi=softfp"
+
+                    abiFilters 'armeabi-v7a', "arm64-v8a"
+                    arguments '-DANDROID_ARM_NEON=TRUE',
+                            '-DANDROID_ARM_MODE=arm',
+                            '-DANDROID_PLATFORM=android-17',
+                            '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=c++_shared',
+                            "-DCMAKE_BUILD_TYPE=Release"
+
+                    //'-DANDROID_STL=c++_static',
+                    //'-DANDROID_STL=gnustl_static',
+                    //-DANDROID_ALLOW_UNDEFINED_SYMBOLS=true
+                }
+            }
+
+            ndk {
+                // 设置支持的 SO 库架构，注意这里要根据你的实际情况来设置
+                abiFilters 'armeabi-v7a', 'arm64-v8a'
+                //''armeabi','armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+
+    sourceSets.main {
+        jni.srcDirs = ['../../../src']
+    }
+
+    android.libraryVariants.all { variant ->
+        variant.outputs.all {
+            def date = new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+08"))
+            def outFileName = outputFileName.toString()
+            outFileName = outFileName.replace(".aar", "")
+            if (variant.buildType.name.equals('debug')) {
+                outputFileName = "${outFileName}_${defaultConfig.versionName}.aar"
+            }
+            if (variant.buildType.name.equals('release')) {
+                outputFileName = "${outFileName}_${defaultConfig.versionName}.aar"
+            }
+        }
+    }
+
+}
+
+bugly {
+    appId = bugly_appId
+    appKey = bugly_appKey
+    debug = false
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

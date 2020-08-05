@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.iget.demo.MainActivity">
+
+    <Button
+        android:id="@+id/id_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/id_push"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="push"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_start" />
+
+    <Button
+        android:id="@+id/id_reweaken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test_reweaken"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_push" />
+
+    <Button
+    android:id="@+id/id_manual_trigger_upload"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="test_ManualTriggerUpload"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/id_reweaken" />
+
+    <Button
+        android:id="@+id/id_release"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test_release"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_manual_trigger_upload" />
+
+    <Button
+        android:id="@+id/id_test_flog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test_flog"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_release" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

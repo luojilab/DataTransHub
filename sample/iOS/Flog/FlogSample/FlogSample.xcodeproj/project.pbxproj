@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E5EB925524DACFB400FC1830 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB925424DACFB400FC1830 /* AppDelegate.m */; };
+		E5EB925824DACFB400FC1830 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB925724DACFB400FC1830 /* SceneDelegate.m */; };
+		E5EB925B24DACFB400FC1830 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB925A24DACFB400FC1830 /* ViewController.m */; };
+		E5EB925E24DACFB400FC1830 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5EB925C24DACFB400FC1830 /* Main.storyboard */; };
+		E5EB926024DACFB900FC1830 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5EB925F24DACFB900FC1830 /* Assets.xcassets */; };
+		E5EB926324DACFB900FC1830 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5EB926124DACFB900FC1830 /* LaunchScreen.storyboard */; };
+		E5EB926624DACFB900FC1830 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB926524DACFB900FC1830 /* main.m */; };
+		E5EB926E24DAD00600FC1830 /* LogHubInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = E5EB926D24DAD00600FC1830 /* LogHubInstance.mm */; };
+		E5EB927124DAD03700FC1830 /* DataTransHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB927024DAD03700FC1830 /* DataTransHub.framework */; };
+		E5EB927224DAD03700FC1830 /* DataTransHub.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB927024DAD03700FC1830 /* DataTransHub.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5EB927524DAD04300FC1830 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB927424DAD03D00FC1830 /* libc++.1.tbd */; };
+		E5EB927724DAD04E00FC1830 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EB927624DAD04900FC1830 /* libz.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E5EB927324DAD03700FC1830 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E5EB927224DAD03700FC1830 /* DataTransHub.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E5EB925024DACFB400FC1830 /* FlogSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlogSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5EB925324DACFB400FC1830 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E5EB925424DACFB400FC1830 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E5EB925624DACFB400FC1830 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		E5EB925724DACFB400FC1830 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		E5EB925924DACFB400FC1830 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E5EB925A24DACFB400FC1830 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E5EB925D24DACFB400FC1830 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E5EB925F24DACFB900FC1830 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E5EB926224DACFB900FC1830 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E5EB926424DACFB900FC1830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5EB926524DACFB900FC1830 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E5EB926C24DAD00600FC1830 /* LogHubInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHubInstance.h; sourceTree = "<group>"; };
+		E5EB926D24DAD00600FC1830 /* LogHubInstance.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LogHubInstance.mm; sourceTree = "<group>"; };
+		E5EB927024DAD03700FC1830 /* DataTransHub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DataTransHub.framework; path = FlogSample/DataTransHub.framework; sourceTree = "<group>"; };
+		E5EB927424DAD03D00FC1830 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		E5EB927624DAD04900FC1830 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E5EB924D24DACFB400FC1830 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5EB927124DAD03700FC1830 /* DataTransHub.framework in Frameworks */,
+				E5EB927724DAD04E00FC1830 /* libz.tbd in Frameworks */,
+				E5EB927524DAD04300FC1830 /* libc++.1.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E5EB924724DACFB300FC1830 = {
+			isa = PBXGroup;
+			children = (
+				E5EB925224DACFB400FC1830 /* FlogSample */,
+				E5EB925124DACFB400FC1830 /* Products */,
+				E5EB926F24DAD03600FC1830 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E5EB925124DACFB400FC1830 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E5EB925024DACFB400FC1830 /* FlogSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E5EB925224DACFB400FC1830 /* FlogSample */ = {
+			isa = PBXGroup;
+			children = (
+				E5EB925324DACFB400FC1830 /* AppDelegate.h */,
+				E5EB925424DACFB400FC1830 /* AppDelegate.m */,
+				E5EB925624DACFB400FC1830 /* SceneDelegate.h */,
+				E5EB925724DACFB400FC1830 /* SceneDelegate.m */,
+				E5EB925924DACFB400FC1830 /* ViewController.h */,
+				E5EB925A24DACFB400FC1830 /* ViewController.m */,
+				E5EB925C24DACFB400FC1830 /* Main.storyboard */,
+				E5EB925F24DACFB900FC1830 /* Assets.xcassets */,
+				E5EB926124DACFB900FC1830 /* LaunchScreen.storyboard */,
+				E5EB926424DACFB900FC1830 /* Info.plist */,
+				E5EB926524DACFB900FC1830 /* main.m */,
+				E5EB926C24DAD00600FC1830 /* LogHubInstance.h */,
+				E5EB926D24DAD00600FC1830 /* LogHubInstance.mm */,
+			);
+			path = FlogSample;
+			sourceTree = "<group>";
+		};
+		E5EB926F24DAD03600FC1830 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5EB927624DAD04900FC1830 /* libz.tbd */,
+				E5EB927424DAD03D00FC1830 /* libc++.1.tbd */,
+				E5EB927024DAD03700FC1830 /* DataTransHub.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E5EB924F24DACFB400FC1830 /* FlogSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5EB926924DACFB900FC1830 /* Build configuration list for PBXNativeTarget "FlogSample" */;
+			buildPhases = (
+				E5EB924C24DACFB400FC1830 /* Sources */,
+				E5EB924D24DACFB400FC1830 /* Frameworks */,
+				E5EB924E24DACFB400FC1830 /* Resources */,
+				E5EB927324DAD03700FC1830 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlogSample;
+			productName = FlogSample;
+			productReference = E5EB925024DACFB400FC1830 /* FlogSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E5EB924824DACFB300FC1830 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "北";
+				TargetAttributes = {
+					E5EB924F24DACFB400FC1830 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = E5EB924B24DACFB300FC1830 /* Build configuration list for PBXProject "FlogSample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E5EB924724DACFB300FC1830;
+			productRefGroup = E5EB925124DACFB400FC1830 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E5EB924F24DACFB400FC1830 /* FlogSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E5EB924E24DACFB400FC1830 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5EB926324DACFB900FC1830 /* LaunchScreen.storyboard in Resources */,
+				E5EB926024DACFB900FC1830 /* Assets.xcassets in Resources */,
+				E5EB925E24DACFB400FC1830 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E5EB924C24DACFB400FC1830 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5EB925B24DACFB400FC1830 /* ViewController.m in Sources */,
+				E5EB925524DACFB400FC1830 /* AppDelegate.m in Sources */,
+				E5EB926624DACFB900FC1830 /* main.m in Sources */,
+				E5EB925824DACFB400FC1830 /* SceneDelegate.m in Sources */,
+				E5EB926E24DAD00600FC1830 /* LogHubInstance.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E5EB925C24DACFB400FC1830 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5EB925D24DACFB400FC1830 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E5EB926124DACFB900FC1830 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5EB926224DACFB900FC1830 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E5EB926724DACFB900FC1830 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E5EB926824DACFB900FC1830 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E5EB926A24DACFB900FC1830 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlogSample",
+				);
+				INFOPLIST_FILE = FlogSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.luojilab.www.FlogSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E5EB926B24DACFB900FC1830 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlogSample",
+				);
+				INFOPLIST_FILE = FlogSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.luojilab.www.FlogSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E5EB924B24DACFB300FC1830 /* Build configuration list for PBXProject "FlogSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5EB926724DACFB900FC1830 /* Debug */,
+				E5EB926824DACFB900FC1830 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5EB926924DACFB900FC1830 /* Build configuration list for PBXNativeTarget "FlogSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5EB926A24DACFB900FC1830 /* Debug */,
+				E5EB926B24DACFB900FC1830 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E5EB924824DACFB300FC1830 /* Project object */;
+}
