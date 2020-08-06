@@ -9,7 +9,6 @@ build/Android/datatranshub/bugly
 build/Android/datatranshub/*.keystore
 build/Android/datatranshub/maven_config.gradle
 build/Android/local.properties
-build/Android/gradle.properties
 build/iOS/build
 sample/Android/DataTransHub/.idea
 sample/Android/DataTransHub/.gradle

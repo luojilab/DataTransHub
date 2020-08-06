@@ -1,8 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
-apply from: 'maven_config.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'bugly'
+apply plugin: 'com.jfrog.bintray'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+version = VERSION_NAME
 
 android {
     compileSdkVersion 28
@@ -25,9 +30,9 @@ android {
 
         release {
             storeFile file("E:\\project\\luojisiwei\\related_files\\android_keystore.jks")
-            storePassword '${sign_storePassword}'
-            keyAlias '${sign_keyAlias}'
-            keyPassword '${sign_keyPassword}'
+            storePassword properties.getProperty("sign_storepassword")
+            keyAlias properties.getProperty("sign_keyalias")
+            keyPassword properties.getProperty("sign_keypassword")
             // 如果要支持最新版的系统 Android N(7.0)
             // 这一行必须加，否则安装时会提示没有签名
             // 作用是只使用旧版签名，禁用V2版签名模式
@@ -154,8 +159,8 @@ android {
 }
 
 bugly {
-    appId = bugly_appId
-    appKey = bugly_appKey
+    appId = properties.getProperty("bugly.appid")
+    appKey = properties.getProperty("bugly.appkey")
     debug = false
 }
 
@@ -167,4 +172,83 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+def siteUrl = 'https://github.com/luojilab/DataTransHub'      // 项目的主页   这个是说明，可随便填
+def gitUrl = 'https://github.com/luojilab/DataTransHub.git'      // Git仓库的url  这个是说明，可随便填
+group = "com.luojilab.component"    // 这里是groupId ,必须填写  一般填你唯一的包名
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'DataTransHub'     //项目描述
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'MIT'
+                        url 'https://mit-license.org/'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'bingjian'        //填写开发者的一些基本信息
+                        name 'lixiaoyu'    //填写开发者的一些基本信息
+                        email 'lixiaoyu@luojilab.com'   //填写开发者的一些基本信息
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+
+bintray {
+    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
+    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
+    configurations = ['archives']
+    pkg {
+        repo = "sourcepool"
+        name = "DataTransHub"    //发布到JCenter上的项目名字，必须填写
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["MIT"]
+        publish = true
+    }
+}
+
+javadoc {
+    options{
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        links "http://docs.oracle.com/javase/7/docs/api"
+    }
 }
