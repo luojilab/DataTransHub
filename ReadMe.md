@@ -29,11 +29,11 @@ demo 的使用请参考[这里](https://github.com/luojilab/DataTransHub/tree/ma
 ### <a name="android_cn">[Android]()</a>
 ## aar接入
 1. 在项目跟目录build.gradle中加入
-repositories {
+    repositories {
         jcenter()
     }
 2. 在项目build.gradle中加入
-implementation 'com.luojilab.component:datatranshub:1.1.3'
+implementation 'com.luojilab.component:datatranshub:1.1.6'
 3. 按照demo的调用方式接入
 
 ## 源码编译
@@ -207,7 +207,126 @@ implementation 'com.luojilab.component:datatranshub:1.1.3'
 
 ## 调用方式
 
+    /**
+     * 创建DataTransHub实例
+     *
+     * @param cacheDir 缓存路径，必须全局唯一，不同业务不同路径
+     * @param dataDir 数据存储路径，必须全局唯一，不同业务不同路径
+     * @param encryptKey 缓存和数据加密的key，需要通过脚本生成
+     * @return
+     */
+    (instancetype)log_MakeLogCacheDir:(NSString *) cacheDir dataDir:(NSString *) dataDir encryptKey:(NSString *) encryptKey
 
+​	
+    /**
+     * 释放上报实例
+     *
+     */
+    (void)log_Destroy
+    
+    /**
+     * 设置数据文件上传实现方法
+     *
+     * @param callBack 文件上传的实现
+     */
+    (void)log_SetUploadBlock:(void (^)(NSString *filePath)) callBack;
+    
+    /**
+     * 设置上传文件最大的尺寸，单位字节
+     *
+     * @param fileMaxSize    最大尺寸
+     */
+    (void)log_SetFileMaxSize:(NSUInteger) fileSize
+    
+     /**
+     * 设置缓存buffer的大小，该大小不应该大于单文件最大尺寸，单位字节
+     *
+     * @param bufferSize   buffer的尺寸
+     */
+    (void)log_SetBufferSize:(NSUInteger) bufferSize
+    
+    /**
+     * 设置文件上报的有效期，单位是秒，如果设置为0则所有数据都上报，不存在过期逻辑
+     *
+     * @param expiredTime 有效期
+     */
+    (void)log_SetExpiredTime:(NSTimeInterval) expiredTime
+    
+    /**
+     * 设置上报间隔，防止上报过度频繁，影响网络。可设置间隔上报
+     *
+     * @param reportingInterval 上报间隔 单位毫秒
+     */
+    (void)log_SetReportingInterval:(NSTimeInterval) reportingInterval
+
+
+    /**
+     * 设置重试间隔，一次上报失败后，重试阶梯通过该方法设置，防止上报失败后马上进行重试，通过该参数设置重试阶梯
+     *
+     * @param retryInterval 单位毫秒
+     */
+    (void)log_SetRetryInterval:(NSTimeInterval) retryInterval
+    
+    /**
+     * 设置数据文件前缀，用于方便过滤数据文件，可不传
+     *
+     * @param prefix         文件前缀
+     */
+    (void)log_SetDataFilePrefix:(NSString *) filePrefix
+    
+    /**
+     * 设置上报策略，如果设置为UploadTriggerWayWayManual，则不会自动上报，需要手动触发上报
+     *
+     * @param uploadTriggerWay UploadTriggerWayWayAuto 或者 UploadTriggerWayWayManual
+     */
+    (void)log_SetUploadTriggerWayWay:(HubUploadTriggerWay) uploadTriggerWay
+    
+    /**
+     * 手动触发上传方法，如果策略设置为手动，则通过这个方法进行触发
+     *
+     * @param completionHandler 上传成功后的回调
+     */
+    (void)log_ManualTriggerUploadCompletionHandler:(dispatch_block_t) completionHandler
+    
+    /**
+     * 设置写入周期，多久数据落盘一次，0表示不进行周期落盘，完全依赖缓冲区阈值控制
+     *
+     * @param period 单位毫秒
+     */
+    (void)data_SetWriteDiskPeriod:(NSUInteger) period
+    
+    /**
+     * 实例上报开始，设置完参数后调用该方法
+     *
+     */
+    (void)log_Start
+    
+    /**
+     * 唤醒方法，当持续上报失败，会触发延长重试策略，当网络转好后，可以通过该方法马上触发再次上报
+     *
+     */
+    (void)log_ReaWaken
+    
+    /**
+     * 真正的上报数据方法，通过该方法传入数据，然后大量数据存储磁盘成单文件
+     *
+     * @param data 字节数据
+     */
+    (void)data_PushData:(NSData *) data
+    
+    /**
+     * 通知上传成功，当上传成功后调用该方法
+     *
+     * @param filePath 需要上传的文件路径
+     */
+    (void)log_NotifyUploadSuccess:(NSString *) filePath
+    
+    /**
+     * 通知上传失败，当上传失败后调用该方法
+     *
+     * @param filePath 需要上传的文件路径
+     */
+    (void)log_NotifyUploadFailed:(NSString *) filePath
 
 ## Support
 
