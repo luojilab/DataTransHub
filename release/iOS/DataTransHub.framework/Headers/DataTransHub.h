@@ -12,9 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DataTransHub : NSObject
 #pragma mark - logHub Constructor & destruct
 + (instancetype)data_MakeDataTransHubCacheDir:(NSString *) cacheDir
-                                      dataDir:(NSString *) dataDir
+                                dataDir:(NSString *) dataDir
                                    encryptKey:(NSString *) encryptKey;
-
 - (void)data_Destroy;
 
 #pragma mark - logHub callBacks
@@ -23,9 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - logHub config
 - (void)data_SetDataFilePrefix:(NSString *) filePrefix;
 
-- (void)data_SetFileMaxSize:(int64_t) fileSize;
+- (void)data_SetFileMaxSize:(NSUInteger) fileSize;
 
-- (void)data_SetBufferSize:(int64_t) bufferSize;
+- (void)data_SetBufferSize:(NSUInteger) bufferSize;
 
 - (void)data_SetExpiredTime:(NSTimeInterval) expiredTime;
 
@@ -33,12 +32,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)data_SetUploadTriggerWayWay:(HubUploadTriggerWay) uploadTriggerWay;
 
+- (void)data_SetWriteDiskPeriod:(NSUInteger) period;
+
 - (void)data_SetRetryInterval:(NSTimeInterval) retryInterval;
 
 #pragma mark - logHub operat
-- (void)data_Start:(void *) f_data;
+- (void)data_Start;
 
-- (void)data_ReaWaken:(void *) f_data;
+- (void)data_ReaWaken;
 
 - (void)data_ManualTriggerUploadCompletionHandler:(dispatch_block_t) completionHandler;
 
@@ -47,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)data_NotifyUploadFailed:(NSString *) filePath;
 
 #pragma mark - DataTransHub write data to DataTransHub
-- (void)data_PushData:(NSString *) data;
+- (void)data_PushData:(NSData *) data;
 @end
 
 NS_ASSUME_NONNULL_END

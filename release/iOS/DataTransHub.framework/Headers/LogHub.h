@@ -35,9 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - logHub config
 - (void)log_SetDataFilePrefix:(NSString *) filePrefix;
 
-- (void)log_SetFileMaxSize:(int64_t) fileSize;
+- (void)log_SetFileMaxSize:(NSUInteger) fileSize;
 
-- (void)log_SetBufferSize:(int64_t) bufferSize;
+- (void)log_SetBufferSize:(NSUInteger) bufferSize;
 
 - (void)log_SetExpiredTime:(NSTimeInterval) expiredTime;
 
@@ -46,6 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)log_SetUploadTriggerWayWay:(HubUploadTriggerWay) uploadTriggerWay;
 
 - (void)log_SetRetryInterval:(NSTimeInterval) retryInterval;
+
+- (void)data_SetWriteDiskPeriod:(NSUInteger) period;
 
 #pragma mark - logHub operat
 - (void)log_Start;
