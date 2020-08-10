@@ -1,6 +1,6 @@
 ## DataTransHub
 
-[![name](https://img.shields.io/badge/release-1.1.3-green?style=flat)]()
+[![name](https://img.shields.io/badge/release-1.1.6-green?style=flat)]()
 [![license](https://img.shields.io/badge/license-MIT-brightgreen?style=flat)]()
 [![platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-red?style=flat)]()
 
