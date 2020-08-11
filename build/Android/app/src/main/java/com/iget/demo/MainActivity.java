@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
                         dataTransHub1.notifyUploadSuccess(filePath);
+                        //dataTransHub1.notifyUploadFailed(filePath);
                     }
                 });
             }
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //1 day
         dataTransHub1.setExpiredTime(60 * 60 * 24);
         //10 min
-        dataTransHub1.setReportingInterval(1000 *60);
+        dataTransHub1.setReportingInterval(10 * 1000 *60);
         dataTransHub1.setFileMaxSize(1024 * 200);
         dataTransHub1.start();
     }
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
                         dataTransHub2.notifyUploadSuccess(filePath);
+                        //dataTransHub2.notifyUploadFailed(filePath);
                     }
                 });
             }

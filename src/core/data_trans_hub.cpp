@@ -312,7 +312,7 @@ namespace future {
             return;
         }
 
-        if(fileMaxSize <= 0){
+        if (fileMaxSize <= 0) {
             return;
         }
         m_ThreadManager->CallOnMainThread([this, fileMaxSize]() {
@@ -325,7 +325,7 @@ namespace future {
         if (m_IsStart) {
             return;
         }
-        if(bufferSize <= 0){
+        if (bufferSize <= 0) {
             return;
         }
 
@@ -339,7 +339,7 @@ namespace future {
         if (m_IsStart) {
             return;
         }
-        if(expiredTime < 0){
+        if (expiredTime < 0) {
             return;
         }
 
@@ -353,7 +353,7 @@ namespace future {
         if (m_IsStart) {
             return;
         }
-        if(reportingInterval < 0){
+        if (reportingInterval < 0) {
             return;
         }
 
@@ -367,7 +367,7 @@ namespace future {
         if (m_IsStart) {
             return;
         }
-        if(retryInterval < 0){
+        if (retryInterval < 0) {
             return;
         }
 
@@ -415,7 +415,8 @@ namespace future {
 
         m_ThreadManager->CallOnMainThread([this]() {
             std::function<void(void)> uploadTask = std::bind(&DataTransHub::Upload, this);
-            m_UploadDelayTasks = std::make_shared<Timer>(std::move(uploadTask), 0, m_ReportingInterval);
+            m_UploadDelayTasks = std::make_shared<Timer>(std::move(uploadTask), 0,
+                                                         m_ReportingInterval);
             std::function<void(void)> writeDiskTask = std::bind(&DataTransHub::WriteDiskTask, this);
             m_WriteDiskTasks = std::make_shared<Timer>(std::move(writeDiskTask), 0,
                                                        m_WriteTaskPeriod);
@@ -442,13 +443,12 @@ namespace future {
             return;
         }
 
-        if (m_NextUploadTime != 0) {
-            m_NextUploadTime = 0;
-            if (m_UploadDelayTasks->IsActive()) {
-                m_UploadDelayTasks->Stop();
-                m_UploadDelayTasks->ReStartWithPeriodTaskManager(m_PeriodTaskManager, 0);
-            }
+        m_NextUploadTime = 0;
+        if (m_UploadDelayTasks->IsActive()) {
+            m_UploadDelayTasks->Stop();
+            m_UploadDelayTasks->ReStartWithPeriodTaskManager(m_PeriodTaskManager, m_NextUploadTime);
         }
+
     }
 
     void DataTransHub::ManualTriggerUpload(std::function<void(void)> finish) {
@@ -491,6 +491,7 @@ namespace future {
             return;
         }
 
+        m_NextUploadTime = 0;
         File::RemoveFile(filePath);
         std::map<std::string, std::function<void(void)>>::iterator iter = m_FileToCallback.find(
                 filePath);
