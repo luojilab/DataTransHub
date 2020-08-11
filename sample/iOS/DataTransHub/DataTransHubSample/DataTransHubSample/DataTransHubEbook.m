@@ -36,8 +36,9 @@ static DataTransHubEbook *singleton;
 
 - (void)defautValues {
     NSString *rootPath = LogHubDocumentDirectory;
-    NSString *cachePath = LogPath(rootPath, logHubAppLogCacheDirPath);
-    NSString *dataPath  = LogPath(rootPath, logHubAppLogDataDirPath);
+    NSLog(@"%@", rootPath);
+    NSString *cachePath = LogPath(logHubAppLogRootDirPath, logHubAppLogCacheDirPath);
+    NSString *dataPath  = LogPath(logHubAppLogRootDirPath, logHubAppLogDataDirPath);
     if (rootPath.length == 0 || cachePath.length == 0 || dataPath.length == 0) {
         return;
     }

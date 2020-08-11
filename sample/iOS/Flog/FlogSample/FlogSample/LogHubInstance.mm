@@ -54,11 +54,12 @@ static LogHubInstance *singleton;
 
 - (void)defautValues {
     NSString *rootPath = LogHubDocumentDirectory;
-    NSString *cachePath = LogPath(rootPath, logHubAppLogCacheDirPath);
-    NSString *dataPath  = LogPath(rootPath, logHubAppLogDataDirPath);
+    NSString *cachePath = LogPath(logHubAppLogRootDirPath, logHubAppLogCacheDirPath);
+    NSString *dataPath  = LogPath(logHubAppLogRootDirPath, logHubAppLogDataDirPath);
     if (rootPath.length == 0 || cachePath.length == 0 || dataPath.length == 0) {
         return;
     }
+    NSLog(@"%@", rootPath);
     NSString *encryptKey = @"572d1e2710ae5fbca54c76a382fdd44050b3a675cb2bf39feebe85ef63d947aff0fa4943f1112e8b6af34bebebbaefa1a0aae055d9259b89a1858f7cc9af9df1";
     self.logHub = [LogHub log_MakeLogCacheDir:cachePath
                                       dataDir:dataPath
