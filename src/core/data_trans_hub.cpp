@@ -446,9 +446,8 @@ namespace future {
         m_NextUploadTime = 0;
         if (m_UploadDelayTasks->IsActive()) {
             m_UploadDelayTasks->Stop();
-            m_UploadDelayTasks->ReStartWithPeriodTaskManager(m_PeriodTaskManager, m_NextUploadTime);
         }
-
+        m_UploadDelayTasks->ReStartWithPeriodTaskManager(m_PeriodTaskManager, m_NextUploadTime);
     }
 
     void DataTransHub::ManualTriggerUpload(std::function<void(void)> finish) {
@@ -498,12 +497,14 @@ namespace future {
         if (iter != m_FileToCallback.end()) {
             iter->second();
             m_FileToCallback.erase(iter);
-            if (m_UploadTriggerWay == UploadTriggerWay::Auto) {
-                m_UploadDelayTasks->StartWithPeriodTaskManager(m_PeriodTaskManager, true);
+            if (m_UploadTriggerWay == UploadTriggerWay::Manual) {
+                return;
             }
-            return;
         }
 
+        if (m_UploadDelayTasks->IsActive()) {
+            m_UploadDelayTasks->Stop();
+        }
         m_UploadDelayTasks->StartWithPeriodTaskManager(m_PeriodTaskManager, true);
     }
 

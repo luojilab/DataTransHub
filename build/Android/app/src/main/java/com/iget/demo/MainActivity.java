@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
-
+int tt = 0;
     public void start1() {
         String dataTransHubCacheDir = this.getFilesDir().getAbsolutePath() + "/data_trans_hub_cache1";
         String dataTransHubDataDir = this.getFilesDir().getAbsolutePath() + "/data_trans_hub_data1";
@@ -90,7 +90,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 uiHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        dataTransHub1.notifyUploadSuccess(filePath);
+                        if(tt++ < 5){
+                            dataTransHub1.notifyUploadFailed(filePath);
+                        }else{
+                            dataTransHub1.notifyUploadSuccess(filePath);
+                        }
+                        //dataTransHub1.notifyUploadSuccess(filePath);
                         //dataTransHub1.notifyUploadFailed(filePath);
                     }
                 });
@@ -100,12 +105,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dataTransHub1.setExpiredTime(60 * 60 * 24);
         //10 min
         dataTransHub1.setReportingInterval(10 * 1000 *60);
+        dataTransHub1.setReportingInterval(10 * 1000);
+        dataTransHub1.setRetryInterval(2 * 1000);
         dataTransHub1.setFileMaxSize(1024 * 200);
         dataTransHub1.start();
     }
 
     private void testPush1() {
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
             dataTransHub1.push("ev=s_paid_paid_impression&uid=12005419&scr=1080*2214&t=1547627349367082203&seid=dd86a82b76722c24427b9db1fb462a4d&net=wifi&mac=c6abbef9f4bea0a0&sid=dd86a82b76722c24427b9db1fb462a4d".getBytes());
         }
     }
