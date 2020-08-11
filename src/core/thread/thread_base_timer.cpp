@@ -60,7 +60,7 @@ namespace future{
         }
         
         
-        if (delayWithPeriod && next_execution_time_ == 0) {
+        if (delayWithPeriod) {
             next_execution_time_ = time_task_->GetPeriod();
         }
         
