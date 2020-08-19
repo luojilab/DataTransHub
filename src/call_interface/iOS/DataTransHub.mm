@@ -26,7 +26,8 @@
 }
 
 - (void)data_Destroy {
-    if (self.isRelease) {
+    self.isRelease = YES;
+    if (nullptr == _dataHub) {
         return;
     }
     future::DataTransHub::Destroy(_dataHub);
