@@ -411,7 +411,6 @@ namespace future {
         if (m_IsStart) {
             return;
         }
-        m_IsStart = true;
 
         m_ThreadManager->CallOnMainThread([this]() {
             std::function<void(void)> uploadTask = std::bind(&DataTransHub::Upload, this);
@@ -433,6 +432,7 @@ namespace future {
         Open();
         Restore();
         m_ThreadManager->Start();
+        m_IsStart = true;
     }
 
     void DataTransHub::ReaWaken() {
@@ -440,6 +440,9 @@ namespace future {
             m_ThreadManager->CallOnMainThread([this]() {
                 ReaWaken();
             });
+            return;
+        }
+        if (!m_IsStart) {
             return;
         }
 
@@ -457,7 +460,9 @@ namespace future {
             });
             return;
         }
-
+        if (!m_IsStart) {
+            return;
+        }
         std::string filePath = GetLastDataFile(m_DataDir, m_Prefix);
         m_FileToCallback[filePath] = finish;
         m_UploadDelayTasks->Stop();
@@ -467,6 +472,9 @@ namespace future {
 
     void DataTransHub::Push(const std::vector<unsigned char> &data) {
         std::lock_guard<std::recursive_mutex> lk(m_Mut);
+        if (!m_IsStart) {
+            return;
+        }
 
         if (m_LogBuffer->GetData().Length() + data.size() >= (m_BufferSize * 4 / 5)) {
             WriteDiskTask();
@@ -487,6 +495,9 @@ namespace future {
             m_ThreadManager->CallOnMainThread([this, filePath]() {
                 NotifyUploadSuccess(filePath);
             });
+            return;
+        }
+        if (!m_IsStart) {
             return;
         }
 
@@ -515,6 +526,10 @@ namespace future {
             });
             return;
         }
+        if (!m_IsStart) {
+            return;
+        }
+
         if (m_NextUploadTime < MAX_WAIT_TIME) {
             m_NextUploadTime += m_Step;
         }
