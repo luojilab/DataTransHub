@@ -48,6 +48,7 @@ static void SetUploadImp(JNIEnv *env, jobject obj, jlong nativeDataTransHub, job
         AndroidUtil::Method_DataTransHub_uploadImp->call(
                 jCallback->GetObj(),
                 filePathJstr);
+        AndroidUtil::getEnv()->DeleteLocalRef(filePathJstr);
     });
 }
 
