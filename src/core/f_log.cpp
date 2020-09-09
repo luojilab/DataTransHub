@@ -122,7 +122,7 @@ namespace future {
         } else {
             log.append(info.filename);
         }
-        log.append(" funname");
+        log.append(" funname:");
         if (info.funcname.empty()) {
             log.append("null");
         } else {
