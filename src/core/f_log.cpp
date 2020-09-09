@@ -51,7 +51,7 @@ namespace future {
         dataTransHub_->SetReportingInterval(reportingInterval);
     }
 
-    void F_Log::SetRetryInterval(std::int64_t retryInterval){
+    void F_Log::SetRetryInterval(std::int64_t retryInterval) {
         dataTransHub_->SetRetryInterval(retryInterval);
     }
 
@@ -84,13 +84,13 @@ namespace future {
         std::string log;
         std::string timeStr = TimeUtil::GetFormatDate("%Y-%m-%d %H:%M:%S.%MS");
         log.append(timeStr);
-        log.append(" ");
+        log.append(" pid:");
         log.append(Int64ToStr(info.pid));
-        log.append(" ");
+        log.append(" tid:");
         log.append(Int64ToStr(info.tid));
-        log.append(" ");
+        log.append(" maintid:");
         log.append(Int64ToStr(info.maintid));
-        log.append(" ");
+        log.append(" level:");
         switch (info.level) {
             case Priority::VERBOSE:
                 log.append("V");
@@ -114,21 +114,23 @@ namespace future {
                 log.append("null");
                 break;
         }
-        log.append(" ");
+        log.append(" tag:");
+        log.append(info.tag);
+        log.append(" filename:");
         if (info.filename.empty()) {
             log.append("null");
         } else {
             log.append(info.filename);
         }
-        log.append(" ");
+        log.append(" funname");
         if (info.funcname.empty()) {
             log.append("null");
         } else {
             log.append(info.funcname);
         }
-        log.append(" ");
+        log.append(" line:");
         log.append(Int64ToStr(info.line));
-        log.append(" ");
+        log.append(" c:");
         log.insert(log.cend(), data.begin(), data.end());
         StringReplace(log, "\n", " ");
         std::vector<unsigned char> formatedData;
