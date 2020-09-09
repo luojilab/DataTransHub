@@ -48,6 +48,7 @@ static void SetUploadImp(JNIEnv *env, jobject obj, jlong nativeF_Log, jobject up
         AndroidUtil::Method_DataTransHub_uploadImp->call(
                 jCallback->GetObj(),
                 filePathJstr);
+        AndroidUtil::getEnv()->DeleteLocalRef(filePathJstr);
     });
 }
 
@@ -223,6 +224,9 @@ static void Write(JNIEnv *env, jobject obj, jlong nativeF_Log, jobject logInfo, 
     info.tid = tid;
     info.maintid = maintid;
 
+    env->DeleteLocalRef(funcname);
+    env->DeleteLocalRef(filename);
+    env->DeleteLocalRef(tag);
     std::size_t dataLen = env->GetArrayLength(data);
     std::vector<unsigned char> cData(dataLen);
 
