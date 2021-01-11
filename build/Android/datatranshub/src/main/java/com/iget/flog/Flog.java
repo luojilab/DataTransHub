@@ -23,17 +23,24 @@ public class Flog implements com.iget.flog.Log.LogImp {
                         mSoloadImp.loadLibrary("data-trans-hub");
                         isLoadSuccess = true;
                     } catch (Throwable e) {
-                        Log.d("soload:", e.getMessage());
+                        Log.d("Flog", "soload:" + e.getMessage());
                     }
                 }
 
                 if (!isLoadSuccess) {
+
                     try {
                         System.loadLibrary("c++_shared");
-                        System.loadLibrary("data-trans-hub");
-                        Log.d("soload:", "data-trans-hub load success!");
+                        Log.d("Flog", "soload:c++_shared load success!");
                     } catch (Throwable e) {
-                        Log.d("soload:", e.getMessage());
+                        Log.d("Flog", "soload:c++_shared load failed " + e.getMessage());
+                    }
+
+                    try {
+                        System.loadLibrary("data-trans-hub");
+                        Log.d("Flog", "soload:data-trans-hub load success!");
+                    } catch (Throwable e) {
+                        Log.d("Flog", "soload:data-trans-hub load failed" + e.getMessage());
                     }
                 }
 
@@ -72,105 +79,105 @@ public class Flog implements com.iget.flog.Log.LogImp {
     }
 
     public synchronized void setUploadImp(IUploadImp uploadImp) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setUploadImp(mNativeFlog, uploadImp);
     }
 
     public synchronized void setFileMaxSize(long fileMaxSize) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setFileMaxSize(mNativeFlog, fileMaxSize);
     }
 
     public synchronized void setBufferSize(long bufferSize) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setBufferSize(mNativeFlog, bufferSize);
     }
 
     public synchronized void setExpiredTime(long expiredTime) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setExpiredTime(mNativeFlog, expiredTime);
     }
 
     public synchronized void setReportingInterval(long reportingInterval) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setReportingInterval(mNativeFlog, reportingInterval);
     }
 
     public synchronized void setRetryInterval(long retryInterval) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setRetryInterval(mNativeFlog, retryInterval);
     }
 
     public synchronized void setDataFilePrefix(String prefix) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setDataFilePrefix(mNativeFlog, prefix);
     }
 
     public synchronized void setUploadTriggerWayWay(int uploadTriggerWay) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setUploadTriggerWayWay(mNativeFlog, uploadTriggerWay);
     }
 
     public synchronized void setWriteDiskPeriod(long period) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setWriteDiskPeriod(mNativeFlog, period);
     }
 
     public synchronized void start() {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         start(mNativeFlog);
     }
 
     public synchronized void reaWaken() {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         reaWaken(mNativeFlog);
     }
 
     public synchronized void manualTriggerUpload(IUploadCallback callback) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         manualTriggerUpload(mNativeFlog, callback);
     }
 
     public synchronized void write(LogInfo logInfo, byte[] data) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         write(mNativeFlog, logInfo, data);
     }
 
     public synchronized void notifyUploadSuccess(String filePath) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         notifyUploadSuccess(mNativeFlog, filePath);
     }
 
     public synchronized void notifyUploadFailed(String filePath) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         notifyUploadFailed(mNativeFlog, filePath);

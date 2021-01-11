@@ -24,10 +24,10 @@ public class DataTransHub {
                     try {
                         mSoloadImp.loadLibrary("c++_shared");
                         mSoloadImp.loadLibrary("data-trans-hub");
-                        Log.d("soload:", "data-trans-hub load success!");
+                        Log.d("DataTranshub", "soload:data-trans-hub load success!");
                         isLoadSuccess = true;
                     } catch (Throwable e) {
-                        Log.d("soload:", e.getMessage());
+                        Log.d("DataTranshub", "soload" + e.getMessage());
                     }
                 }
 
@@ -35,10 +35,10 @@ public class DataTransHub {
                     try {
                         System.loadLibrary("c++_shared");
                         System.loadLibrary("data-trans-hub");
-                        Log.d("soload:", "data-trans-hub load success!");
+                        Log.d("DataTranshub", "soload:data-trans-hub load success!");
                         isLoadSuccess = true;
                     } catch (Throwable e) {
-                        Log.d("soload:", e.getMessage());
+                        Log.d("DataTranshub", "soload:" + e.getMessage());
                     }
                 }
 
@@ -77,105 +77,105 @@ public class DataTransHub {
     }
 
     public synchronized void setUploadImp(IUploadImp uploadImp) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setUploadImp(mNativeDataTransHub, uploadImp);
     }
 
     public synchronized void setFileMaxSize(long fileMaxSize) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setFileMaxSize(mNativeDataTransHub, fileMaxSize);
     }
 
     public synchronized void setBufferSize(long bufferSize) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setBufferSize(mNativeDataTransHub, bufferSize);
     }
 
     public synchronized void setExpiredTime(long expiredTime) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setExpiredTime(mNativeDataTransHub, expiredTime);
     }
 
     public synchronized void setReportingInterval(long reportingInterval) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setReportingInterval(mNativeDataTransHub, reportingInterval);
     }
 
     public synchronized void setRetryInterval(long retryInterval) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setRetryInterval(mNativeDataTransHub, retryInterval);
     }
 
     public synchronized void setDataFilePrefix(String prefix) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setDataFilePrefix(mNativeDataTransHub, prefix);
     }
 
     public synchronized void setUploadTriggerWayWay(int uploadTriggerWay) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setUploadTriggerWayWay(mNativeDataTransHub, uploadTriggerWay);
     }
 
     public synchronized void setWriteDiskPeriod(long period) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         setWriteDiskPeriod(mNativeDataTransHub, period);
     }
 
     public synchronized void start() {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         start(mNativeDataTransHub);
     }
 
     public synchronized void reaWaken() {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         reaWaken(mNativeDataTransHub);
     }
 
     public synchronized void manualTriggerUpload(IUploadCallback callback) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         manualTriggerUpload(mNativeDataTransHub, callback);
     }
 
     public synchronized void push(byte[] data) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         push(mNativeDataTransHub, data);
     }
 
     public synchronized void notifyUploadSuccess(String filePath) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         notifyUploadSuccess(mNativeDataTransHub, filePath);
     }
 
     public synchronized void notifyUploadFailed(String filePath) {
-        if(mIsRelease){
+        if (mIsRelease) {
             return;
         }
         notifyUploadFailed(mNativeDataTransHub, filePath);
