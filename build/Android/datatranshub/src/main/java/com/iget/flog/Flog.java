@@ -73,6 +73,10 @@ public class Flog implements com.iget.flog.Log.LogImp {
         mNativeFlog = makeNativeFlog(cacheDir, dataDir, encryptKey);
     }
 
+    private Flog(){
+
+    }
+
     public synchronized void release() {
         mIsRelease = true;
         releaseNativeFlog(mNativeFlog);

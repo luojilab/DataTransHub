@@ -71,6 +71,10 @@ public class DataTransHub {
         mNativeDataTransHub = makeNativeDataTransHub(cacheDir, dataDir, encryptKey);
     }
 
+    private DataTransHub() {
+
+    }
+
     public synchronized void release() {
         mIsRelease = true;
         releaseNativeDataTransHub(mNativeDataTransHub);
