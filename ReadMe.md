@@ -33,7 +33,7 @@ demo 的使用请参考[这里](https://github.com/luojilab/DataTransHub/tree/ma
         mavenCentral()
     }
 2. 在项目build.gradle中加入
-implementation 'com.luojilab.component:datatranshub:1.2.5'
+implementation 'io.github.luojilab:datatranshub:1.2.5'
 3. 按照demo的调用方式接入
 
 ## 源码编译
