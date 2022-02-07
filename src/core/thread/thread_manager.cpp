@@ -1,6 +1,7 @@
 #include <mutex>
 #include <deque>
 #include <chrono>
+#include <assert.h>
 #include "config/platform.h"
 #include "thread_manager.h"
 #include "base/never_destroyed.h"

@@ -1,19 +1,11 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'bugly'
-
+apply plugin: 'maven-publish'
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
-def buglyAppid = properties.getProperty('bugly.appid')
-def buglyAppkey = properties.getProperty('bugly.appkey')
-def version_code = properties.getProperty('version.Code')
-def version_name = properties.getProperty('version.Name')
-ext {
-    PUBLISH_ARTIFACT_ID = 'datatranshub'
-    PUBLISH_VERSION = version_name
-}
+def version_code = properties.getProperty('PUBLISH_VERSION')
+def version_name = properties.getProperty('PUBLISH_VERSION_NAME')
+
 
 android {
     compileSdkVersion 28
@@ -21,10 +13,10 @@ android {
 
     defaultConfig {
         minSdkVersion 19
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 23
         versionCode version_code as int
         versionName version_name
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -35,7 +27,7 @@ android {
         }
 
         release {
-            storeFile file("E:\\project\\luojisiwei\\related_files\\android_keystore.jks")
+            storeFile file(properties.getProperty("store_file"))
             storePassword properties.getProperty("sign_storepassword")
             keyAlias properties.getProperty("sign_keyalias")
             keyPassword properties.getProperty("sign_keypassword")
@@ -172,12 +164,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-}
-
-bugly {
-    appId = properties.getProperty("bugly.appid")
-    appKey = properties.getProperty("bugly.appkey")
-    debug = false
 }
 
 apply from: '../publish.gradle'

@@ -21,8 +21,8 @@ ext {
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
 ext["signing.secretKeyRingFile"] = ''
-ext["ossrhUsername"] = ''
-ext["ossrhPassword"] = ''
+ext["ossrh_username"] = ''
+ext["ossrh_password"] = ''
 
 File secretPropsFile = project.rootProject.file('local.properties')
 if (secretPropsFile.exists()) {
@@ -42,10 +42,10 @@ publishing {
             // we'll set up in a moment
             groupId PUBLISH_GROUP_ID
             artifactId PUBLISH_ARTIFACT_ID
-            version PUBLISH_VERSION
+            version PUBLISH_VERSION_NAME
 
             // Two artifacts, the `aar` and the sources
-            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+            artifact("$buildDir/outputs/aar/${project.getName()}-release_${version}.aar")
             artifact androidSourcesJar
 
             // Self-explanatory metadata for the most part
@@ -86,7 +86,6 @@ publishing {
             // This is an arbitrary name, you may also use "mavencentral" or
             // any other name that's descriptive for you
             name = "mavenCentral"
-
             def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
             def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
             // You only need this if you want to publish snapshots, otherwise just set the URL
@@ -95,8 +94,8 @@ publishing {
 
             // The username and password we've fetched earlier
             credentials {
-                username ossrhUsername
-                password ossrhPassword
+                username ossrh_username
+                password ossrh_password
             }
         }
     }
