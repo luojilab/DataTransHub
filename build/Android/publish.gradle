@@ -10,19 +10,16 @@ task androidSourcesJar(type: Jar) {
 }
 
 ext {
-    PUBLISH_GROUP_ID = 'io.github.luojilab'
+    group_id = 'io.github.luojilab'
+    artifact_id = 'datatranshub'
 }
-//ext {
-//    PUBLISH_GROUP_ID = 'com.sunsta.livery'
-//    PUBLISH_ARTIFACT_ID = 'livery'
-//    PUBLISH_VERSION = '1.2.0'
-//}
 
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
 ext["signing.secretKeyRingFile"] = ''
 ext["ossrh_username"] = ''
 ext["ossrh_password"] = ''
+ext["version_name"] = ''
 
 File secretPropsFile = project.rootProject.file('local.properties')
 if (secretPropsFile.exists()) {
@@ -35,26 +32,29 @@ if (secretPropsFile.exists()) {
 } else {
     println "No props file, loading env vars"
 }
+
+
+
 publishing {
     publications {
         release(MavenPublication) {
             // The coordinates of the library, being set from variables that
             // we'll set up in a moment
-            groupId PUBLISH_GROUP_ID
-            artifactId PUBLISH_ARTIFACT_ID
-            version PUBLISH_VERSION_NAME
+            groupId group_id
+            artifactId artifact_id
+            version version_name
 
             // Two artifacts, the `aar` and the sources
-            artifact("$buildDir/outputs/aar/${project.getName()}-release_${version}.aar")
+            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
             artifact androidSourcesJar
 
             // Self-explanatory metadata for the most part
             pom {
                 packaging 'aar'
-                name = PUBLISH_ARTIFACT_ID
+                name = artifact_id
                 description = 'platform data reporte component'
                 // If your project has a dedicated site, use its URL here
-                url = 'https://github.com/luojilab/DataReporter'
+                url = 'https://github.com/luojilab/DataTransHub'
                 licenses {
                     license {
                         //协议类型，一般默认Apache License2.0的话不用改：
@@ -72,10 +72,10 @@ publishing {
                 // Version control info, if you're using GitHub, follow the format as seen here
                 scm {
                     //修改成你的Git地址：
-                    connection = 'scm:git:github.com/luojilab/DataReporter.git'
-                    developerConnection = 'scm:git:ssh://github.com/luojilab/DataReporter.git'
+                    connection = 'scm:git:github.com/luojilab/DataTransHub.git'
+                    developerConnection = 'scm:git:ssh://github.com/luojilab/DataTransHub.git'
                     //分支地址：
-                    url = 'https://github.com/luojilab/DataReporter/tree/master'
+                    url = 'https://github.com/luojilab/DataTransHub/tree/master'
                 }
             }
         }

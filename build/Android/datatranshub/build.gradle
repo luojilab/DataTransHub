@@ -1,22 +1,20 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-def version_code = properties.getProperty('PUBLISH_VERSION')
-def version_name = properties.getProperty('PUBLISH_VERSION_NAME')
-
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 32
+
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    def version_code = properties.getProperty('version_code')
+    def version_name = properties.getProperty('version_name')
 
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 17
         //noinspection ExpiredTargetSdkVersion
-        targetSdkVersion 23
-        versionCode version_code as int
-        versionName version_name
+        targetSdkVersion 28
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -27,10 +25,7 @@ android {
         }
 
         release {
-            storeFile file(properties.getProperty("store_file"))
-            storePassword properties.getProperty("sign_storepassword")
-            keyAlias properties.getProperty("sign_keyalias")
-            keyPassword properties.getProperty("sign_keypassword")
+
             // 如果要支持最新版的系统 Android N(7.0)
             // 这一行必须加，否则安装时会提示没有签名
             // 作用是只使用旧版签名，禁用V2版签名模式
@@ -47,7 +42,7 @@ android {
                     cppFlags "-std=c++14",
                             "-DPIC",
                             "-fPIC",
-                            "-DVERSION_CODE=${defaultConfig.versionCode}",
+                            "-DVERSION_CODE=${version_code}",
                             "-llog"
                     //,"-fsanitize=address -fno-omit-frame-pointer"
 
@@ -93,7 +88,7 @@ android {
                             "-fPIC",
                             "-O3", //gcc use Os
                             "-DNDEBUG",
-                            "-DVERSION_CODE=${defaultConfig.versionCode}",
+                            "-DVERSION_CODE=${version_code}",
                             "-fvisibility=hidden",
                             "-llog"
 
@@ -129,6 +124,8 @@ android {
         }
     }
 
+    ndkPath "D:\\android_dev\\android-ndk-r23b"
+
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
@@ -140,19 +137,19 @@ android {
         jni.srcDirs = ['../../../src']
     }
 
-    android.libraryVariants.all { variant ->
-        variant.outputs.all {
-            def date = new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+08"))
-            def outFileName = outputFileName.toString()
-            outFileName = outFileName.replace(".aar", "")
-            if (variant.buildType.name.equals('debug')) {
-                outputFileName = "${outFileName}_${defaultConfig.versionName}.aar"
-            }
-            if (variant.buildType.name.equals('release')) {
-                outputFileName = "${outFileName}_${defaultConfig.versionName}.aar"
-            }
-        }
-    }
+//    android.libraryVariants.all { variant ->
+//        variant.outputs.all {
+//            def date = new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+08"))
+//            def outFileName = outputFileName.toString()
+//            outFileName = outFileName.replace(".aar", "")
+//            if (variant.buildType.name.equals('debug')) {
+//                outputFileName = "${outFileName}_${defaultConfig.versionName}.aar"
+//            }
+//            if (variant.buildType.name.equals('release')) {
+//                outputFileName = "${outFileName}_${defaultConfig.versionName}.aar"
+//            }
+//        }
+//    }
 
 }
 
