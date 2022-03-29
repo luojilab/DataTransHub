@@ -22,7 +22,7 @@ public class DataTransHub {
                 boolean isLoadSuccess = false;
                 if (mSoloadImp != null) {
                     try {
-                        mSoloadImp.loadLibrary("c++_shared");
+                        //mSoloadImp.loadLibrary("c++_shared");
                         mSoloadImp.loadLibrary("data-trans-hub");
                         Log.d("DataTranshub", "soload:data-trans-hub load success!");
                         isLoadSuccess = true;
@@ -33,7 +33,7 @@ public class DataTransHub {
 
                 if (!isLoadSuccess) {
                     try {
-                        System.loadLibrary("c++_shared");
+                        //System.loadLibrary("c++_shared");
                         System.loadLibrary("data-trans-hub");
                         Log.d("DataTranshub", "soload:data-trans-hub load success!");
                         isLoadSuccess = true;

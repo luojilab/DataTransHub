@@ -19,7 +19,7 @@ public class Flog implements com.iget.flog.Log.LogImp {
                 boolean isLoadSuccess = false;
                 if (mSoloadImp != null) {
                     try {
-                        mSoloadImp.loadLibrary("c++_shared");
+                        //mSoloadImp.loadLibrary("c++_shared");
                         mSoloadImp.loadLibrary("data-trans-hub");
                         isLoadSuccess = true;
                     } catch (Throwable e) {
@@ -29,12 +29,12 @@ public class Flog implements com.iget.flog.Log.LogImp {
 
                 if (!isLoadSuccess) {
 
-                    try {
-                        System.loadLibrary("c++_shared");
-                        Log.d("Flog", "soload:c++_shared load success!");
-                    } catch (Throwable e) {
-                        Log.d("Flog", "soload:c++_shared load failed " + e.getMessage());
-                    }
+//                    try {
+//                        System.loadLibrary("c++_shared");
+//                        Log.d("Flog", "soload:c++_shared load success!");
+//                    } catch (Throwable e) {
+//                        Log.d("Flog", "soload:c++_shared load failed " + e.getMessage());
+//                    }
 
                     try {
                         System.loadLibrary("data-trans-hub");
